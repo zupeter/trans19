@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class='row'>
+	{% include 'case/list-inline.html' with case_record=object_case detail=True %}
+
+	<div class='col-12'>
+		<a href='{{ object_case.get_edit_url }}'>Edit</a>
+		<a href='{{ object_case.get_delete_url }}'>Delete</a>
+	</div>
+	<p>
+		<br>
+	</p>
+</div>
+
+<hr>
+
+
+{% endblock %}
