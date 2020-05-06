@@ -30,10 +30,13 @@ class LocationRecord(models.Model):
 	y_coord			= models.DecimalField(max_digits=22, decimal_places=16, null=True)
 	category		= models.CharField(max_length=30)
 
+	def __str__(self):
+		return f"{self.location} in {self.district}"
+
 
 class VisitRecord(models.Model):
-	location		= models.ForeignKey(CaseRecord, on_delete=models.PROTECT)
+	location		= models.ForeignKey(LocationRecord, on_delete=models.PROTECT)
 	date_from		= models.DateField()
 	date_to			= models.DateField()
 	detail			= models.CharField(max_length=127, null=True, blank=True)
-	
+	case 			= models.ForeignKey(CaseRecord, on_delete=models.CASCADE)
