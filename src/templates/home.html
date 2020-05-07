@@ -4,13 +4,16 @@
 
 <div class="row">
 	<div class='col'>
-		<h1 style="text-align:center"> Trans-19 </h1>
+		<h1> Trans-19 </h1>
 		<br>
 	</div>
 </div>
-<div class="row justify-content-center" style="background:lightgrey">
-	<div class='col-auto'>
-		<table class="table">
+<div class="row" style="background:lightgrey">
+	<div class="col-3">
+		<h5>Patient</h5>
+	</div>
+	<div class='col-6'>
+		<table class="table table-responsive">
 			<tr>
 				<td>
 					<a class="btn btn-primary" href="/case">Search</a>
@@ -21,10 +24,51 @@
 			</tr>
 			<tr>
 				<td>
-					<a class="btn btn-primary" href="/case/modify">Modify</a>
+					<a href="/case/modify" class="btn btn-secondary disabled" role="button" aria-disabled="true">Modify</a>
 				</td>
 				<td>
-					<a class="btn btn-primary" href="/case/delete">Delete</a>
+					<a href="/case/delete" class="btn btn-secondary disabled" role="button" aria-disabled="true">Delete</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<br>
+<div class="row" style="background:lightgrey">
+	<div class="col-3">
+		<h5>Location</h5>
+	</div>
+	<div class='col-6'>
+		<table class="table table-responsive">
+			<tr>
+				<td>
+					<a class="btn btn-primary" href="/location">Search</a>
+				</td>
+				<td>
+					<a href="/location/create" class="btn btn-secondary disabled" role="button" aria-disabled="true">Create</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/location/modify" class="btn btn-secondary disabled" role="button" aria-disabled="true">Modify</a>
+				</td>
+				<td>
+					<a href="/location/delete" class="btn btn-secondary disabled" role="button" aria-disabled="true">Delete</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<br>
+<div class="row" style="background:lightgrey">
+	<div class="col-3">
+		<h5>Connection search</h5>
+	</div>
+	<div class="col-auto">
+		<table class="table table-responsive">
+			<tr>
+				<td>
+					<a href="/search" class="btn btn-primary disabled" role="button" aria-disabled="true">Search</a>
 				</td>
 			</tr>
 		</table>
