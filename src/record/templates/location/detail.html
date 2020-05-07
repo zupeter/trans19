@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> Table of Locations</h2>
+<h2> Table of Locations</h2>
 	<div class="row">
 		<div class='col-12'>
-			<h4 style="display:inline">Case Detail</h2>
 			<a href="create">Create a new location record</a>
-		
 			<table class="table">
 				<thead class="thead-dark">
-					{% for object in object_list %}
 					<tr>
 						<th>Location</th>
 						<th>Address</th>
@@ -27,7 +24,6 @@
 						<td>{{object.category}}</td>
 					</tr>
 				</tbody>
-					{% endfor %}
 			</table>
 		</div>
 	</div>
