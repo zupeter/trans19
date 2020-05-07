@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from .models import *
@@ -47,7 +47,15 @@ def case_record_detail_view(request,case_num):
 
 def case_record_update_view(request,case_num):
 	#MODIFY case
-	return HttpResponse("<h1>update case</h1>")
+	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	objlink = obj.case_number
+	form = CaseForm(request.POST or None, instance=obj)
+	if form.is_valid():
+		form.save()
+		return redirect("/case/"+str(obj.case_number))
+	template_name = "case/modify/modify.html"
+	context = {'form':form}
+	return render(request, template_name, context)
 
 
 def case_record_delete_view(request,case_num):
