@@ -1,15 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> List of cases</h2>
+	<h2> Table of cases</h2>
 	<div class="row">
 		<div class='col-12'>
-			<a href="create">Create a new record of case</a>
+			<a href="create">Create a new case record</a>
+		
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>Name</th>
+						<th>Identity Document Number</th>
+						<th>Date of Birth</th>
+						<th>Date Case</th>
+						<th>Case Number</th>
+						<th>Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for object in object_list %}
+					<tr>
+						<td>{{object.name}}</td>
+						<td>{{object.id_number}}</td>
+						<td>{{object.date_of_birth}}</td>
+						<td>{{object.date_of_comfirmed}}</td>
+						<td>{{object.case_number}}</td>
+						<td>View</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+				
+			</table>
 		</div>
-		{% for object in object_list %}
-			{% include 'case/list-inline.html' with case_record=object %}
-		{% endfor %}
-
 	</div>
 
 {% endblock %}
