@@ -27,7 +27,9 @@ def case_record_create_view(request):
 	# return HttpResponse("<h1>create cases</h1>")
 	form = CaseForm(request.POST or None)
 	if form.is_valid():
-		print(form.cleaned_data)
+		obj = form.save(commit=False)
+		obj.save()
+		form = CaseForm()
 	context = {"form":form}
 	template_name = "case/create/create.html"
 	return render(request, template_name,context)
