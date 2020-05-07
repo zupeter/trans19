@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2> List of Locations</h2>
+	{% for object in object_list %}
+		{{object.location}}
+		<a href='{{ object.get_absolute_url }}' class="btn btn-primary">View</a>
+	{% endfor %}
+
+{% endblock %}
