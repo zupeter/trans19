@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2> Table of Locations</h2>
+	<div class="row">
+		<div class='col-12'>
+			<a href="create">Create a new location record</a>
+		
+			<table>
+				{% for object in object_list %}
+				<tr>
+					<td>Location</td>
+					<td>{{object.location}}</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>{{object.address}}</td>
+				</tr>
+				<tr>
+					<td>X-Coordinate</td>
+					<td>{{object.x_coord}}</td>
+				</tr>
+				<tr>
+					<td>Y-Coordinate</td>
+					<td>{{object.y_coord}}</td>
+				</tr>
+				<tr>
+					<td>Details</td>
+					<td>???</td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td>{{object.category}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+{% endblock %}
