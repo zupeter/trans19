@@ -2,23 +2,24 @@
 
 {% block content %}
 	<h2> Creating new case</h2>
-	<div class="personal information">
-		<form method="post" action=".">
+		<form method='POST' action=".">{% csrf_token %}
 			<dd>Name</dd>
 				<input type="text" name = "name">
 			<dd>Identity Document Number</dd>
-				<input type="text" name = "ID">
+				<input type="text" name = "id_number">
 			<dd>Date of Birth</dd>
-				<input type="date" name="Date_of_Birth">
+				<input type="date" name="date_of_birth">
 			<dd>Date Case</dd>
-				<input type="date" name=" Date_Case">
+				<input type="date" name=" date_of_comfirmed">
 			<dd>Case Number</dd>
-				<input type="text" name = "Case_Number">
-		</form>
-	</div>
-<br>
-			<a class="btn btn-primary" type="submit" href="" > Add </a>
+				<input type="text" name = "case_number">
+
+			<br>
+			<br>
+			<button type="submit"  > Add </button>
 			<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
+		</form>
+
 <!--				<script>-->
 <!--					function remind(){-->
 <!--						alert("Creating successfully");-->
