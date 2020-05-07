@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2> List of cases</h2>
+	<div class="row">
+		<div class='col-12'>
+			<a href="create">Create a new record of case</a>
+		</div>
+		{% for object in object_list %}
+			{% include 'case/list-inline.html' with case_record=object %}
+		{% endfor %}
+
+	</div>
+
+{% endblock %}

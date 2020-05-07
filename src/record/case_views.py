@@ -7,7 +7,10 @@ from .models import *
 def case_record_list_view(request):
 	#list out cases
 	#could be search
-	return HttpResponse("<h1>List of cases</h1>")
+	qs = CaseRecord.objects.all()
+	template_name = "case/list.html"
+	context = {'object_list': qs}
+	return render(request, template_name, context)
 
 
 def case_record_create_view(request):
