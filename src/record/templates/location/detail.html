@@ -16,6 +16,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% for object in object.list %}
 					<tr>
 						<td>{{object.location}}</td>
 						<td>{{object.address}}</td>
@@ -23,6 +24,7 @@
 						<td>{{object.y_coord}}</td>
 						<td>{{object.category}}</td>
 					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>
