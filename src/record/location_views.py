@@ -4,6 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import *
 
+
 def location_record_list_view(request):
 	#list out locations
 	#could be search

@@ -1,8 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-# Create your views here.
 from .models import *
+
+# CRUD #Create / Retrieve / Update / Delete
+
+# GET ->Retrieve / List
+
+# POST -> Create / Update / Delete
+
 
 def case_record_list_view(request):
 	#list out cases

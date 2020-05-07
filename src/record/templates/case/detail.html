@@ -3,18 +3,37 @@
 
 {% block content %}
 <div class='row'>
-	{% include 'case/list-inline.html' with case_record=object_case detail=True %}
-
 	<div class='col-12'>
 		<a href='{{ object_case.get_edit_url }}'>Edit</a>
 		<a href='{{ object_case.get_delete_url }}'>Delete</a>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Identity Document Number</th>
+					<th>Date of Birth</th>
+					<th>Date Case</th>
+					<th>Case Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{object_case.name}}</td>
+					<td>{{object_case.id_number}}</td>
+					<td>{{object_case.date_of_birth}}</td>
+					<td>{{object_case.date_of_comfirmed}}</td>
+					<td>{{object_case.case_number}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<p>
-		<br>
-	</p>
 </div>
-
 <hr>
+<div class="row">
+	<div class='col-12'>
+		<h5>Location visited by this patient:</h5>
+		<!-- query case object's all visit and make a table with the data -->
+	</div>
 
-
+</div>
 {% endblock %}
