@@ -20,6 +20,7 @@ def case_record_list_view(request):
 
 
 def case_record_create_view(request):
+	# MANSOOOOOOOOOOOOOOOON HI
 	#ADD case(s)
 	#with a form
 	return HttpResponse("<h1>create cases</h1>")

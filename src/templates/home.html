@@ -2,36 +2,33 @@
 
 {% block content %}
 
-<div class="container" style="background:lightgrey">
-	<div class="row">
-		<div class='col'>
-			<h2 style="text-align:center"> Home page </h2>
-			<br>
-		</div>
-	</div>
-	<div class="row justify-content-center">
-		<div class='col-auto'>
-			<table class="table">
-				<tr>
-					<td>
-						<a class="btn btn-primary" href="/case">Search</a>
-					</td>
-					<td>
-						<a class="btn btn-primary" href="/case/create">Create</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a class="btn btn-primary" href="/case/modify">Modify</a>
-					</td>
-					<td>
-						<a class="btn btn-primary" href="/case/delete">Delete</a>
-					</td>
-				</tr>
-			</table>
-		</div>
+<div class="row">
+	<div class='col'>
+		<h1 style="text-align:center"> Trans-19 </h1>
+		<br>
 	</div>
 </div>
-
+<div class="row justify-content-center" style="background:lightgrey">
+	<div class='col-auto'>
+		<table class="table">
+			<tr>
+				<td>
+					<a class="btn btn-primary" href="/case">Search</a>
+				</td>
+				<td>
+					<a class="btn btn-primary" href="/case/create">Create</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a class="btn btn-primary" href="/case/modify">Modify</a>
+				</td>
+				<td>
+					<a class="btn btn-primary" href="/case/delete">Delete</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
 
 {% endblock %}
