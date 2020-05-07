@@ -59,4 +59,10 @@ def case_record_update_view(request,case_num):
 
 
 def case_record_delete_view(request,case_num):
-	return HttpResponse("<h1>delete case</h1>")
+	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	template_name = "case/delete/delete.html"
+	if request.method == "POST":
+		obj.delete()
+		return redirect("/case")
+	context = {'object_case': obj}
+	return render(request, template_name, context)

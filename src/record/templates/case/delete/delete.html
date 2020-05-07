@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class='row'>
+	<div class='col-12'>
+		<h1>Are you sure you want to <b style="color:red">DELETE</b> the following case?</h1>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Identity Document Number</th>
+					<th>Date of Birth</th>
+					<th>Date Case</th>
+					<th>Case Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{object_case.name}}</td>
+					<td>{{object_case.id_number}}</td>
+					<td>{{object_case.date_of_birth}}</td>
+					<td>{{object_case.date_of_comfirmed}}</td>
+					<td>{{object_case.case_number}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br>
+		<form method="POST">{% csrf_token %}
+			<button class="btn btn-danger">Yes, delete</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
