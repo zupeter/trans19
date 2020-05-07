@@ -4,31 +4,30 @@
 	<h2> Table of Locations</h2>
 	<div class="row">
 		<div class='col-12'>
+			<h4 style="display:inline">Case Detail</h2>
 			<a href="create">Create a new location record</a>
 		
-			<table>
-				{% for object in object_list %}
-				<tr>
-					<td><th>Location</th></td>
-					<td>{{object.location}}</td>
-				</tr>
-				<tr>
-					<td><th>Address</th></td>
-					<td>{{object.address}}</td>
-				</tr>
-				<tr>
-					<td><th>X-Coordinate</th></td>
-					<td>{{object.x_coord}}</td>
-				</tr>
-				<tr>
-					<td><th>Y-Coordinate</th></td>
-					<td>{{object.y_coord}}</td>
-				</tr>
-				<tr>
-					<td><th>Category</th></td>
-					<td>{{object.category}}</td>
-				</tr>
-				{% endfor %}
+			<table class="table">
+				<thead class="thead-dark">
+					{% for object in object_list %}
+					<tr>
+						<th>Location</th>
+						<th>Address</th>
+						<th>X-Coordinate</th>
+						<th>Y-Coordinate</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{object.location}}</td>
+						<td>{{object.address}}</td>
+						<td>{{object.x_coord}}</td>
+						<td>{{object.y_coord}}</td>
+						<td>{{object.category}}</td>
+					</tr>
+				</tbody>
+					{% endfor %}
 			</table>
 		</div>
 	</div>
