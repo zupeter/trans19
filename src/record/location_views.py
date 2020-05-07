@@ -18,7 +18,8 @@ def location_record_list_view(request):
 def location_record_create_view(request):
 	#ADD location(s)
 	#with a form
-	return HttpResponse("<h1>create location</h1>")
+	print(request.POST)
+	return render(request, "insert_location_form.html", context)
 
 
 def location_record_detail_view(request,location_num):
@@ -32,7 +33,7 @@ def location_record_detail_view(request,location_num):
 
 def location_record_update_view(request,case_num):
 	#MODIFY location
-	return HttpResponse("<h1>update location</h1>")
+	return HttpResponse("<h1>create location</h1>")
 
 
 def location_record_delete_view(request,case_num):
