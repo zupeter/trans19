@@ -21,9 +21,9 @@ def location_record_create_view(request):
 	return HttpResponse("<h1>create location</h1>")
 
 
-def location_record_detail_view(request,inputlocation):
+def location_record_detail_view(request,location_num):
 	#VIEW one location in detail
-	obj_location = get_object_or_404(LocationRecord, location=inputlocation)
+	obj_location = get_object_or_404(LocationRecord, location=location_num)
 	template_name = "location/detail.html"
 	context = {'object_location': obj_location}
 	return render(request, template_name, context)
