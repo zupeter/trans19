@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2> Creating new case</h2>
+	<div class="personal information">
+			<dd>Name</dd>
+				<input type="text">
+			<dd>Identity Document Number</dd>
+				<input type="text">
+			<dd>Date of Birth</dd>
+				<input type="date">
+			<dd>Date Case</dd>
+				<input type="date">
+			<dd>Case Number</dd>
+				<input type="text">
+
+	</div>
+<div class = "visited location">
+					<dd>location</dd>
+						<input type="text">
+					<dd>Address</dd>
+						<input type="text">
+					<dd>District</dd>
+						<input type="text">
+					<dd>X Coord</dd>
+						<input type="text">
+					<dd>Y Coord</dd>
+						<input type="text">
+					<dd>Date From</dd>
+						<input type="text">
+					<dd>date To</dd>
+						<input type="text">
+					<dd>Detail</dd>
+						<input type="text">
+					<dd>Category</dd>
+						<input type="text">
+
+</div>
+			<a class="btn btn-primary" href="" > Next </a>
+			<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
+<!--				<script>-->
+<!--					function remind(){-->
+<!--						alert("Creating successfully");-->
+<!--					}-->
+<!--				</script>-->
+{% endblock %}
