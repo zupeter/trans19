@@ -4,12 +4,7 @@
 	<h2> List of Locations</h2>
 	{% for object in object_list %}
 		{{object.location}}
-<<<<<<< HEAD
 		<a href='{{ object.get_location_absolute_url }}' class="btn btn-primary">View</a>
-=======
-		<a href='{{ object.get_absolute_url }}' class="btn btn-primary">View</a>
 		</br>
->>>>>>> ffd715e9ce8c4c286418d02b4830ae234e589cdb
-	{% endfor %}
-
+	{% end for %}
 {% endblock %}
