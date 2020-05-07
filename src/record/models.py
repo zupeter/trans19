@@ -25,6 +25,7 @@ class CaseRecord(models.Model):
 		return f"{self.get_absolute_url()}/delete"
 
 
+
 class LocationRecord(models.Model):
 	location		= models.CharField(max_length=127)
 	address			= models.CharField(max_length=255, null=True, blank=True)

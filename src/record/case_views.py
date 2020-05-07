@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .models import *
+from .form import *
 
 # CRUD #Create / Retrieve / Update / Delete
 
@@ -24,10 +25,12 @@ def case_record_create_view(request):
 	#ADD case(s)
 	#with a form
 	# return HttpResponse("<h1>create cases</h1>")
-
+	form = CaseForm(request.POST or None)
+	if form.is_valid():
+		print(form.cleaned_data)
+	context = {"form":form}
 	template_name = "case/create/create.html"
-	context = {'object_list': None}
-	return render(request, template_name, context)
+	return render(request, template_name,context)
 
 
 def case_record_detail_view(request,case_num):
