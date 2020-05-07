@@ -18,6 +18,8 @@ def location_record_list_view(request):
 def location_record_create_view(request):
 	#ADD location(s)
 	#with a form
+	qs = LocationRecord.objects.all()
+	context = {'object_list': qs}
 	print(request.POST)
 	return render(request, "insert_location_form.html", context)
 
