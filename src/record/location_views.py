@@ -9,7 +9,7 @@ def location_record_list_view(request):
 	#list out locations
 	#could be search
 	qs = LocationRecord.objects.all()
-	template_name = "location/list.html"
+	template_name = "location/detail.html"
 	context = {'object_list': qs}
 	return render(request, template_name, context)
 	return HttpResponse("<h1>List of locations</h1>")
