@@ -8,6 +8,10 @@ from .models import *
 def location_record_list_view(request):
 	#list out locations
 	#could be search
+	qs = LocationRecord.objects.all()
+	template_name = "location/list.html"
+	context = {'object_list': qs}
+	return render(request, template_name, context)
 	return HttpResponse("<h1>List of locations</h1>")
 
 
@@ -17,8 +21,12 @@ def location_record_create_view(request):
 	return HttpResponse("<h1>create location</h1>")
 
 
-def location_record_detail_view(request,case_num):
+def location_record_detail_view(request,inputlocation):
 	#VIEW one location in detail
+	obj_location = get_object_or_404(LocationRecord, location=inputlocation)
+	template_name = "location/detail.html"
+	context = {'object_location': obj_location}
+	return render(request, template_name, context)
 	return HttpResponse("<h1>view one location in detail</h1>")
 
 
