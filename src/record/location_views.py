@@ -20,7 +20,7 @@ def location_record_create_view(request):
 	#with a form
 	qs = LocationRecord.objects.all()
 	context = {'object_list': qs}
-	template_name = "location/insert_location_form.html"
+	template_name = "location/create.html"
 	print(request.POST)
 	return render(request, template_name, context)
 

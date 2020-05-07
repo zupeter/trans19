@@ -15,6 +15,9 @@ class CaseRecord(models.Model):
 		# print(f"/case/{self.case_number}")
 		return f"/case/{self.case_number}"
 
+	def get_location_absolute_url(self):
+		return f"/location/{self.location_num}"	
+
 	def get_edit_url(self):
 		return f"{self.get_absolute_url()}/modify"
 
