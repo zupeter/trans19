@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> Creating new case</h2>
+<form method='POST' action='.'> {% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit"> Add </button>
+</form>
+
+<!--	<h2> Creating new case</h2>
 		<form method='POST' action=".">{% csrf_token %}
 			<dd>Name</dd>
 				<input type="text" name = "name">
@@ -18,6 +23,7 @@
 			<button type="submit"  > Add </button>
 			<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
 		</form>
+-->
 
 <!--				<script>-->
 <!--					function remind(){-->

@@ -27,7 +27,7 @@ def location_record_create_view(request):
 
 def location_record_detail_view(request,location_num):
 	#VIEW one location in detail
-	obj_location = get_object_or_404(LocationRecord, location=location_num)
+	obj_location = get_object_or_404(LocationRecord, pk=location_num)
 	template_name = "location/detail.html"
 	context = {'object_location': obj_location}
 	return render(request, template_name, context)
@@ -36,6 +36,9 @@ def location_record_detail_view(request,location_num):
 
 def location_record_update_view(request,case_num):
 	#MODIFY location
+	obj_location = get_object_or_404(LocationRecord, location=location_num)
+	template_name = "location/modify.html"
+	context = {'object_location': obj_location}
 	return HttpResponse("<h1>create location</h1>")
 
 

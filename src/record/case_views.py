@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from .models import *
@@ -28,7 +28,9 @@ def case_record_create_view(request):
 	print(request.POST)
 	form = CaseForm(request.POST or None)
 	if form.is_valid():
-		print(form.cleaned_data)
+		obj = form.save(commit=False)
+		obj.save()
+		form = CaseForm()
 	context = {"form":form}
 	template_name = "case/create/create.html"
 	return render(request, template_name,context)
@@ -46,11 +48,28 @@ def case_record_detail_view(request,case_num):
 
 def case_record_update_view(request,case_num):
 	#MODIFY case
+<<<<<<< HEAD
 	obj_case = get_object_or_404(CaseRecord, case_number = case_num)
 	template_name = "case/modify/modify.html"
 	context = {'object_case': obj_case}
+=======
+	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	objlink = obj.case_number
+	form = CaseForm(request.POST or None, instance=obj)
+	if form.is_valid():
+		form.save()
+		return redirect("/case/"+str(obj.case_number))
+	template_name = "case/modify/modify.html"
+	context = {'form':form}
+>>>>>>> 7c644b7cb11e4a06a49b5d452ef116e0a2fd1403
 	return render(request, template_name, context)
 
 
 def case_record_delete_view(request,case_num):
-	return HttpResponse("<h1>delete case</h1>")
+	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	template_name = "case/delete/delete.html"
+	if request.method == "POST":
+		obj.delete()
+		return redirect("/case")
+	context = {'object_case': obj}
+	return render(request, template_name, context)
