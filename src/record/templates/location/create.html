@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2> Creating new location</h2>
+
+<form method ='POST' action='.'> {% csrf_token %}
+					<dd>location</dd>
+						<input type="text">
+					<dd>Address</dd>
+						<input type="text">
+					<dd>District</dd>
+						<input type="text">
+					<dd>X Coord</dd>
+						<input type="text">
+					<dd>Y Coord</dd>
+						<input type="text">
+					<dd>Date From</dd>
+						<input type="text">
+					<dd>date To</dd>
+						<input type="text">
+					<dd>Detail</dd>
+						<input type="text">
+					<dd>Category</dd>
+						<input type="text">
+          <button type='submit'>Insert</button>
+</form>
+<!--				<script>-->
+<!--					function remind(){-->
+<!--						alert("Creating successfully");-->
+<!--					}-->
+<!--				</script>-->
+{% endblock %}
