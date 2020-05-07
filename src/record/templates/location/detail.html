@@ -3,7 +3,7 @@
 {% block content %}
 	<h2> Table of Locations</h2>
 	<div class="row">
-		<div class='col-1'>
+		<div class='col-12'>
 			<a href="create">Create a new location record</a>
 		
 			<table>
@@ -13,19 +13,19 @@
 					<td>{{object.location}}</td>
 				</tr>
 				<tr>
-					<td>Address</td>
+					<td><th>Address</th></td>
 					<td>{{object.address}}</td>
 				</tr>
 				<tr>
-					<td>X-Coordinate</td>
+					<td><th>X-Coordinate</th></td>
 					<td>{{object.x_coord}}</td>
 				</tr>
 				<tr>
-					<td>Y-Coordinate</td>
+					<td><th>Y-Coordinate</th></td>
 					<td>{{object.y_coord}}</td>
 				</tr>
 				<tr>
-					<td>Category</td>
+					<td><th>Category</th></td>
 					<td>{{object.category}}</td>
 				</tr>
 				{% endfor %}
