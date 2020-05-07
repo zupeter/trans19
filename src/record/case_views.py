@@ -24,9 +24,9 @@ def case_record_create_view(request):
 	#ADD case(s)
 	#with a form
 	# return HttpResponse("<h1>create cases</h1>")
-	qs = CaseRecord.objects.all()
+
 	template_name = "case/create/create.html"
-	context = {'object_list': qs}
+	context = {'object_list': None}
 	return render(request, template_name, context)
 
 

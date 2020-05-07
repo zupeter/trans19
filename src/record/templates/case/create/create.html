@@ -3,40 +3,21 @@
 {% block content %}
 	<h2> Creating new case</h2>
 	<div class="personal information">
+		<form method="post" action=".">
 			<dd>Name</dd>
-				<input type="text">
+				<input type="text" name = "name">
 			<dd>Identity Document Number</dd>
-				<input type="text">
+				<input type="text" name = "ID">
 			<dd>Date of Birth</dd>
-				<input type="date">
+				<input type="date" name="Date_of_Birth">
 			<dd>Date Case</dd>
-				<input type="date">
+				<input type="date" name=" Date_Case">
 			<dd>Case Number</dd>
-				<input type="text">
-
+				<input type="text" name = "Case_Number">
+		</form>
 	</div>
-<div class = "visited location">
-					<dd>location</dd>
-						<input type="text">
-					<dd>Address</dd>
-						<input type="text">
-					<dd>District</dd>
-						<input type="text">
-					<dd>X Coord</dd>
-						<input type="text">
-					<dd>Y Coord</dd>
-						<input type="text">
-					<dd>Date From</dd>
-						<input type="text">
-					<dd>date To</dd>
-						<input type="text">
-					<dd>Detail</dd>
-						<input type="text">
-					<dd>Category</dd>
-						<input type="text">
-
-</div>
-			<a class="btn btn-primary" href="" > Next </a>
+<br>
+			<a class="btn btn-primary" type="submit" href="" > Add </a>
 			<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
 <!--				<script>-->
 <!--					function remind(){-->
