@@ -6,6 +6,7 @@
 		<div class='col-12'>
 			<a href="create">Create a new location record</a>
 			<table class="table">
+			{% for object in object_list %}
 				<thead class="thead-dark">
 					<tr>
 						<th>Location</th>
@@ -15,8 +16,7 @@
 						<th>Category</th>
 					</tr>
 				</thead>
-				<tbody>
-					{% for object in object_list %}
+				<tbody>					
 					<tr>
 						<td>{{object.location}}</td>
 						<td>{{object.address}}</td>
@@ -24,7 +24,7 @@
 						<td>{{object.y_coord}}</td>
 						<td>{{object.category}}</td>
 					</tr>
-					{% endfor %}
+			{% endfor %}
 				</tbody>
 			</table>
 		</div>
