@@ -27,6 +27,7 @@ def case_record_create_view(request):
 	form = CaseForm(request.POST or None)
 	if form.is_valid():
 		obj = form.save(commit=False)
+		obj.case_num
 		obj.save()
 		form = CaseForm()
 	context = {"form":form}
@@ -38,7 +39,7 @@ def case_record_detail_view(request,case_num):
 	#VIEW case
 	#get 1 object -> detail view
 	#under case details, list all the visits to locaiton
-	obj_case = get_object_or_404(CaseRecord, case_number=case_num)
+	obj_case = get_object_or_404(CaseRecord, pk=case_num)
 	template_name = "case/detail.html"
 	context = {'object_case': obj_case}
 	return render(request, template_name, context)
@@ -47,7 +48,7 @@ def case_record_detail_view(request,case_num):
 def case_record_update_view(request,case_num):
 	#MODIFY case
 
-	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	obj = get_object_or_404(CaseRecord, pk=case_num)
 	objlink = obj.case_number
 	form = CaseForm(request.POST or None, instance=obj)
 	if form.is_valid():
@@ -60,7 +61,7 @@ def case_record_update_view(request,case_num):
 
 
 def case_record_delete_view(request,case_num):
-	obj = get_object_or_404(CaseRecord, case_number=case_num)
+	obj = get_object_or_404(CaseRecord, pk=case_num)
 	template_name = "case/delete/delete.html"
 	if request.method == "POST":
 		obj.delete()
@@ -71,7 +72,7 @@ def case_record_delete_view(request,case_num):
 
 def case_record_add_visit_view(request,case_num):
 	form = VisitForm(request.POST or None)
-	obj_case = get_object_or_404(CaseRecord, case_number=case_num)
+	obj_case = get_object_or_404(CaseRecord, pk=case_num)
 	template_name = "Vist/form.html"
 	
 	if form.is_valid():

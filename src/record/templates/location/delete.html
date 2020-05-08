@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class='row'>
+	<div class='col-12'>
+		<h1>Are you sure you want to <b style="color:red">DELETE</b> the following location?</h1>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Location</th>
+					<th>Address</th>
+					<th>District</th>
+					<th>X Coord</th>
+					<th>Y Coord</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ object.location }}</td>
+					<td>{{ object.address }}</td>
+					<td>{{ object.district }}</td>
+					<td>{{ object.x_coord }}</td>
+					<td>{{ object.y_coord }}</td>
+					<td>{{ object.category }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br>
+		<form method="POST">{% csrf_token %}
+			<button class="btn btn-danger">Yes, delete</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

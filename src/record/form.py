@@ -10,11 +10,11 @@ class CaseForm(ModelForm):
 class LocationForm(ModelForm):
 	class Meta:
 		model = LocationRecord
-		fields = ['location','address','district','x_coord','y_coord','category']
+		fields = ['location','address','district','x_coord','y_coord','detail','category']
 		#idk how to make this form, this class looks very different from the tutorial you sent us#
 
 
 class VisitForm(ModelForm):
 	class Meta:
 		model = VisitRecord
-		fields = ['location','date_from','date_to','detail','case']
+		fields = ['location','date_from','date_to','case']
