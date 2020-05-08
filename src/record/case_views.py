@@ -49,10 +49,13 @@ def case_record_detail_view(request,case_num):
 def case_record_update_view(request,case_num):
 	#MODIFY case
 # <<<<<<< HEAD
+# <<<<<<< HEAD
 	obj_case = get_object_or_404(CaseRecord, case_number = case_num)
 	template_name = "case/modify/modify.html"
 	context = {'object_case': obj_case}
 # =======
+# =======
+# >>>>>>> 5a7df91fbf5bc73ba135f28b18512f42c4b55bab
 	obj = get_object_or_404(CaseRecord, case_number=case_num)
 	objlink = obj.case_number
 	form = CaseForm(request.POST or None, instance=obj)
@@ -61,7 +64,10 @@ def case_record_update_view(request,case_num):
 		return redirect("/case/"+str(obj.case_number))
 	template_name = "case/modify/modify.html"
 	context = {'form':form}
+# <<<<<<< HEAD
 # >>>>>>> 7c644b7cb11e4a06a49b5d452ef116e0a2fd1403
+# =======
+# >>>>>>> 5a7df91fbf5bc73ba135f28b18512f42c4b55bab
 	return render(request, template_name, context)
 
 
