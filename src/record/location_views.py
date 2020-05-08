@@ -22,7 +22,6 @@ def location_record_create_view(request):
 	qs = LocationRecord.objects.all()
 	context = {'object_list': qs}
 	template_name = "location/create.html"
-	print(request.POST)
 	return render(request, template_name, context)
 
 
@@ -31,7 +30,6 @@ def location_record_detail_view(request,pkey):
 	obj_location = get_object_or_404(LocationRecord, pk=pkey)
 	template_name = "location/detail.html"
 	context = {'object': obj_location}
-	print(obj_location)
 	return render(request, template_name, context)
 	# return HttpResponse("<h1>view one location in detail</h1>")
 
