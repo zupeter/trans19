@@ -9,6 +9,7 @@ def location_record_list_view(request):
 	#list out locations
 	#could be search
 	qs = LocationRecord.objects.all()
+	print(qs)
 	template_name = "location/list.html"
 	context = {'object_list': qs}
 	return render(request, template_name, context)
@@ -29,9 +30,10 @@ def location_record_detail_view(request,location_num):
 	#VIEW one location in detail
 	obj_location = get_object_or_404(LocationRecord, pk=location_num)
 	template_name = "location/detail.html"
-	context = {'object_location': obj_location}
+	context = {'object': obj_location}
+	print(obj_location)
 	return render(request, template_name, context)
-	return HttpResponse("<h1>view one location in detail</h1>")
+	# return HttpResponse("<h1>view one location in detail</h1>")
 
 
 def location_record_update_view(request,case_num):
