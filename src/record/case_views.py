@@ -24,8 +24,6 @@ def case_record_create_view(request):
 	# MANSOOOOOOOOOOOOOOOON HI
 	#ADD case(s)
 	#with a form
-	# return HttpResponse("<h1>create cases</h1>")
-	print(request.POST)
 	form = CaseForm(request.POST or None)
 	if form.is_valid():
 		obj = form.save(commit=False)
@@ -69,3 +67,19 @@ def case_record_delete_view(request,case_num):
 		return redirect("/case")
 	context = {'object_case': obj}
 	return render(request, template_name, context)
+
+
+def case_record_add_visit_view(request,case_num):
+	form = VisitForm(request.POST or None)
+	obj_case = get_object_or_404(CaseRecord, case_number=case_num)
+	template_name = "Vist/form.html"
+	
+	if form.is_valid():
+		obj = form.save(commit=False)
+		print (obj.case)
+		obj.save()
+		form = VisitForm()
+
+	context = {"form":form}
+	template_name = "Visit/form.html"
+	return render(request, template_name,context)
