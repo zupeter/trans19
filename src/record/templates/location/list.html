@@ -2,9 +2,13 @@
 
 {% block content %}
 <div class="row">
-	<div class="col-auto">
+	<div class="col-6">
 		<h2 style="display:inline">Locations</h2>
-		<a class="btn btn-primary" href="/location/create" style=>Add New Location</a>
+	</div>
+	<div class="col-6">
+		<div class="text-left">
+			<a class="btn btn-primary" href="/location/create" style=>Add New Location</a>
+		</div>
 	</div>
 </div>
 
@@ -19,6 +23,8 @@
 					<th>X Coord</th>
 					<th>Y Coord</th>
 					<th>Category</th>
+					<th>Modify</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +36,8 @@
 						<td>{{ object.x_coord }}</td>
 						<td>{{ object.y_coord }}</td>
 						<td>{{ object.category }}</td>
+						<td><a class="btn btn-primary" href="{{ object.get_location_modify_url }}" style=>Modify</a></td>
+						<td><a class="btn btn-primary" href="{{ object.get_location_delete_url }}" style=>Delete</a></td>
 					</tr>
 				{% endfor %}
 			</tbody>

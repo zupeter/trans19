@@ -13,10 +13,7 @@ class CaseRecord(models.Model):
 
 	def get_absolute_url(self):
 		# print(f"/case/{self.case_number}")
-		return f"/case/{self.case_number}"
-
-	def get_location_absolute_url(self):
-		return f"/location/{self.location_num}"	
+		return f"/case/{self.case_number}"	
 
 	def get_edit_url(self):
 		return f"{self.get_absolute_url()}/modify"
@@ -36,6 +33,15 @@ class LocationRecord(models.Model):
 
 	def __str__(self):
 		return f"{self.location} in {self.district}"
+
+	def get_location_absolute_url(self):
+		return f"/location/{self.pk}"
+
+	def get_location_modify_url(self):
+		return f"/location/{self.pk}/modify"
+
+	def get_location_delete_url(self):
+		return f"/location/{self.pk}/delete"
 
 
 class VisitRecord(models.Model):
