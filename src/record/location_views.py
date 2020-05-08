@@ -49,4 +49,10 @@ def location_record_update_view(request,pkey):
 
 
 def location_record_delete_view(request,pkey):
-	return HttpResponse("<h1>delete location</h1>")
+	obj = get_object_or_404(LocationRecord, pk=pkey)
+	template_name = "location/delete.html"
+	if request.method == "POST":
+		obj.delete()
+		return redirect("/location")
+	context = {'object': obj}
+	return render(request, template_name, context)
