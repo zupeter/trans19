@@ -52,7 +52,7 @@ def case_record_update_view(request,case_num):
 	form = CaseForm(request.POST or None, instance=obj)
 	if form.is_valid():
 		form.save()
-		return redirect("/case/"+str(obj.case_number))
+		return redirect("/case/"+str(obj.case_number)+"/detail")
 	template_name = "case/modify/modify.html"
 	context = {'form':form}
 

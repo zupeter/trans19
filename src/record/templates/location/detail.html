@@ -1,27 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2> Table of Locations</h2>
-	<div class="row">
-		<div class='col-12'>
-			<!--<a href="create">Create a new location record</a>-->
-
-
-						<p>Location : {{object.location}}</p>
-			<br>
-						<p>Address : {{object.address}}</p>
-			<br>
-						<p>X-Coordinate : {{object.x_coord}}</p>
-			<br>
-						<p>Y-Coordinate : {{object.y_coord}}</p>
-			<br>
-						<p>Category : {{object.category}}</p>
-			<br>
-
-
-
-
-		</div>
+<div class="row">
+	<div class="col-6">
+		<h2 style="display:inline">Updated location</h2>
 	</div>
+	<div class="col-6">
+		<div class="text-right">
+			<a class="btn btn-primary" href="/location/" style=>Return to Locations</a>
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Location</th>
+					<th>Address</th>
+					<th>District</th>
+					<th>X Coord</th>
+					<th>Y Coord</th>
+					<th>Category</th>
+					<th>Modify</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ object.location }}</td>
+					<td>{{ object.address }}</td>
+					<td>{{ object.district }}</td>
+					<td>{{ object.x_coord }}</td>
+					<td>{{ object.y_coord }}</td>
+					<td>{{ object.category }}</td>
+					<td><a class="btn btn-primary" href="{{ object.get_location_modify_url }}" style=>Modify</a></td>
+					<td><a class="btn btn-primary" href="{{ object.get_location_delete_url }}" style=>Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
 {% endblock %}
