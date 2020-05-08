@@ -1,10 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> List of Locations</h2>
-	{% for object in object_list %}
-		{{object.location}}
-		<a href='/location/{{ object.pk }}/detail' class="btn btn-primary">View /location/{{ object.pk }}/detail</a>
-		</br>
-	{% endfor %}
+<div class="row">
+	<div class="col-auto">
+		<h2 style="display:inline">Locations</h2>
+		<a class="btn btn-primary" href="/location/create" style=>Add New Location</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Location</th>
+					<th>Address</th>
+					<th>District</th>
+					<th>X Coord</th>
+					<th>Y Coord</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for object in object_list %}
+					<tr>
+						<td>{{ object.location }}</td>
+						<td>{{ object.address }}</td>
+						<td>{{ object.district }}</td>
+						<td>{{ object.x_coord }}</td>
+						<td>{{ object.y_coord }}</td>
+						<td>{{ object.category }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
 {% endblock %}
