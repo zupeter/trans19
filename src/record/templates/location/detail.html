@@ -4,29 +4,23 @@
 <h2> Table of Locations</h2>
 	<div class="row">
 		<div class='col-12'>
-			<a href="create">Create a new location record</a>
-			<table class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th>Location</th>
-						<th>Address</th>
-						<th>X-Coordinate</th>
-						<th>Y-Coordinate</th>
-						<th>Category</th>
-					</tr>
-				</thead>
-				<tbody>					
-					{% for object in object_list %}
-					<tr>
-						<td>{{object.location}}</td>
-						<td>{{object.address}}</td>
-						<td>{{object.x_coord}}</td>
-						<td>{{object.y_coord}}</td>
-						<td>{{object.category}}</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+			<!--<a href="create">Create a new location record</a>-->
+
+
+						<p>Location : {{object.location}}</p>
+			<br>
+						<p>Address : {{object.address}}</p>
+			<br>
+						<p>X-Coordinate : {{object.x_coord}}</p>
+			<br>
+						<p>Y-Coordinate : {{object.y_coord}}</p>
+			<br>
+						<p>Category : {{object.category}}</p>
+			<br>
+
+
+
+
 		</div>
 	</div>
 
