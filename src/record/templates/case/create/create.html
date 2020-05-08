@@ -3,7 +3,15 @@
 {% block content %}
 <form method='POST' action='.'> {% csrf_token %}
 	{{ form.as_p }}
-	<button type="submit"> Add </button>
+	<p class="text-info">Date format is mm/dd/yyyy </p>
+	<button type="submit"> Confirm </button>
+
+	<br>
+
+	<br>
+	<a type="submit" class="btn btn-primary" href="http://127.0.0.1:8000/location/create/" style=>Add Location</a>
+
+	<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
 </form>
 
 <!--	<h2> Creating new case</h2>
