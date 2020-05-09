@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.db.models import Q
 
 from .models import *
 from .form import *
@@ -74,7 +75,7 @@ def case_record_add_visit_view(request, pkey):
 	form = VisitForm(request.POST or None)
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	template_name = "Visit/form.html"
-	
+
 	if form.is_valid():
 		obj = form.save(commit=False)
 		obj.save()
@@ -107,3 +108,11 @@ def case_record_delete_visit_view(request, pkey, vpkey):
 	template_name = "Visit/delete.html"
 	return render(request, template_name, context)
 
+def case_search_connections(request, pkey, vpkey):
+	obj_case = get_object_or_404(CaseRecord, pk=pkey)
+	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
+	connection_visit = VisitRecord.objects.filter(~Q(date_from > obj_visit.date_to +2), ~Q(date_from < obj_visit.date_from -2),Q(location = obj_visit.location))
+	connection_case = get_object_or_404(CaseRecord, case_number = connection_visit.case) #someone help me link them together
+	context = {'og_case':obj_case,'og_visit':obj_visit, 'connection_case':connection_case, 'connection_visit':connection_visit}
+	template_name = "case/connections.html"
+	return render(request, template_name, context)
