@@ -67,6 +67,7 @@
 					<th>Category</th>
 					<th>Modify</th>
 					<th>Delete</th>
+					<th><Trace Connections</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -83,6 +84,7 @@
 					<td>{{ visit.category }}</td>
 					<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/modify" style=>Modify</a></td>
 					<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/delete" style=>Delete</a></td>
+					<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/trace" style=>Trace</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
