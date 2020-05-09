@@ -24,13 +24,57 @@ class CaseRecord(models.Model):
 
 
 class LocationRecord(models.Model):
+	CENTRALANDWESTERN = 'Central and Western'
+	EASTERN = 'Eastern'
+	SOUTHERN = 'Southern'
+	WANCHAI = 'Wan Chai'
+
+	SHAMSHUIPO = 'Sham Shui Po'
+	KOWLOONCITY = 'Kowloon City'
+	KWUNTONG = 'Kwun Tong'
+	WONGTAISIN = 'Wong Tai Sin'
+	YAUTSIMMONG = 'Yau Tsim Mong'
+
+	ISLANDS = 'Islands'
+	KWAITSING = 'Kwai Tsing'
+	NORTH = 'North'
+	SAIKUNG = 'Sai Kung'
+	SHATIN = 'Sha Tin'
+	TAIPO = 'Tai Po'
+	TSUENWAN = 'Tsuen Wan'
+	TUENMUN = 'Tuen Mun'
+	YUENLONG = 'Yuen Long'
+
+	DISTRICT_CHOICES = [
+		(CENTRALANDWESTERN,'Central and Western'),
+		(EASTERN,'Eastern'),
+		(SOUTHERN,'Southern'),
+		(WANCHAI,'Wan Chai'),
+		(SHAMSHUIPO,'Sham Shui Po'),
+		(KOWLOONCITY,'Kowloon City'),
+		(KWUNTONG,'Kwun Tong'),
+		(WONGTAISIN,'Wong Tai Sin'),
+		(YAUTSIMMONG,'Yau Tsim Mong'),
+		(ISLANDS,'Islands'),
+		(KWAITSING,'Kwai Tsing'),
+		(NORTH,'North'),
+		(SAIKUNG,'Sai Kung'),
+		(SHATIN,'Sha Tin'),
+		(TAIPO,'Tai Po'),
+		(TSUENWAN,'Tsuen Wan'),
+		(TUENMUN,'Tuen Mun'),
+		(YUENLONG,'Yuen Long'),
+	]
 	location		= models.CharField(max_length=127)
 	address			= models.CharField(max_length=255, null=True, blank=True)
-	district		= models.CharField(max_length=20, default='Central and Western')
+	district		= models.CharField(max_length=20, choices=DISTRICT_CHOICES, default=CENTRALANDWESTERN)
 	x_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	y_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	detail			= models.CharField(max_length=127, null=True, blank=True)
 	category		= models.CharField(max_length=30)
+
+
+
 
 	def __str__(self):
 		return f"{self.location} in {self.district}"
@@ -50,3 +94,4 @@ class VisitRecord(models.Model):
 	date_from		= models.DateField()
 	date_to			= models.DateField()
 	case 			= models.ForeignKey(CaseRecord, on_delete=models.CASCADE)
+

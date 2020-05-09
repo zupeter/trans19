@@ -1,8 +1,87 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> Creating new location</h2>
+<h2> Create new location</h2>
+<form method='POST' action='.'> {% csrf_token %}
+	{% for field in form %}
+		<hr>
+		{% if field.label_tag == "District:" %}
+			<div class="fieldWrapper">
+				<h1>YOOO</h1>
+			</div>
+		{% else %}
+		    <div class="fieldWrapper">
+		        {{ field.errors }}
+		        {{ field.label_tag }} {{ field }}
+		        {% if field.help_text %}
+		        <p class="help">{{ field.help_text|safe }}</p>
+		        {% endif %}
+		    </div>
 
+		{% endif %}
+	{% endfor %}
+	<hr>
+	<button type="submit"> Save </button>
+</form>
+
+<!--
+<form method='POST' action='.'> {% csrf_token %}
+	<p>
+		<label for="id_location">Location:</label>
+		<input type="text" name="location" maxlength="127" required id="id_location">
+	</p>
+	<p>
+		<label for="id_address">Address:</label>
+		<input type="text" name="address" maxlength="255" id="id_address">
+	</p>
+	<p>
+		<label for="id_district">District:</label>
+		<input type="text" name="district" value="Central and Western" maxlength="20" required id="id_district" list="districts">
+		<datalist id="districts">
+			<option value="Central and Western">
+			<option value="Eastern">
+			<option value="Southern">
+			<option value="Wan Chai">
+
+			<option value="Kowloon City">
+			<option value="Kwun Tong">
+			<option value="Sham Shui Po">
+			<option value="Wong Tai Sin">
+			<option value="Yau Tsim Mong">
+
+			<option value="Islands">
+			<option value="Kwai Tsing">
+			<option value="North">
+			<option value="Sham Shui Po">
+			<option value="Sai Kung">
+			<option value="Sha Tin">
+			<option value="Tai Po">
+			<option value="Tsuen Wan">
+			<option value="Tuen Mun">
+			<option value="Yuen Long">
+		</datalist>
+	</p>
+	<p>
+		<label for="id_x_coord">X coord:</label>
+		<input type="number" name="x_coord" step="0.0001" required id="id_x_coord">
+	</p>
+	<p>
+		<label for="id_y_coord">Y coord:</label>
+		<input type="number" name="y_coord" step="0.0001" required id="id_y_coord">
+	</p>
+	<p>
+		<label for="id_detail">Detail:</label>
+		<input type="text" name="detail" maxlength="127" id="id_detail">
+	</p>
+	<p>
+		<label for="id_category">Category:</label>
+		<input type="text" name="category" maxlength="30" required id="id_category">
+	</p>
+	<button type="submit"> Save </button>
+</form>
+-->
+
+<!--
 <form method ='POST' action='.'> {% csrf_token %}
 	<dd>location</dd>
 		<input type="text" name="location">
@@ -12,20 +91,18 @@
 	<br>
 	<label for="District">District</label>
 	<br>
-		<!--<input type="text" name="">-->
 	<select id="District">
-		<!--<p>Hong Kong Island</p>-->
 		<option value="Central and Western">Central and Western</option>
 		<option value="Eastern">Eastern</option>
 		<option value="Southern">Southern</option>
 		<option value="Wan Chai">Wan Chai</option>
-		<!--<p>Kowloon</p>-->
+
 		<option value="Kowloon City">Kowloon City</option>
 		<option value="Kwun Tong">Kwun Tong</option>
 		<option value="Sham Shui Po">Sham Shui Po</option>
 		<option value="Wong Tai Sin">Wong Tai Sin</option>
 		<option value="Yau Tsim Mong">Yau Tsim Mong</option>
-		<!--<p>New Territories</p>-->
+
 		<option value="Islands">Islands</option>
 		<option value="Kwai Tsing">Kwai Tsing</option>
 		<option value="North">North</option>
@@ -49,12 +126,7 @@
 <button type='submit'>Insert</button>
 </form>
 
-
-<!--<a class="btn btn-primary backBtn btn-lg pull-left" type="button" href="http://127.0.0.1:8000" >Back</a>-->
-
 <br>
 <a href="javascript:javascript:history.go(-2)">Back</a>
-<!--???-->
-
-
+-->
 {% endblock %}
