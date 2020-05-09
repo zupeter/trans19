@@ -26,7 +26,7 @@ class CaseRecord(models.Model):
 class LocationRecord(models.Model):
 	location		= models.CharField(max_length=127)
 	address			= models.CharField(max_length=255, null=True, blank=True)
-	district		= models.CharField(max_length=20, default='Hong Kong')
+	district		= models.CharField(max_length=20, default='Central and Western')
 	x_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	y_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	detail			= models.CharField(max_length=127, null=True, blank=True)
