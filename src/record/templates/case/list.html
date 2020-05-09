@@ -19,6 +19,7 @@
 					<th>Date Case</th>
 					<th>Case Number</th>
 					<th>Details</th>
+					<th>Trace Connections</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,7 +31,7 @@
 					<td>{{object.date_of_comfirmed}}</td>
 					<td>{{object.case_number}}</td>
 					<td><a href='{{ object.get_absolute_url }}' class="btn btn-primary">View</a></td>
-					<td><a href='{{ object.get_absolute_url }}' class="btn btn-primary">Trace Connections</a></td>
+					<td><a href='{{ object.get_absolute_url }}' class="btn btn-primary">Trace</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
