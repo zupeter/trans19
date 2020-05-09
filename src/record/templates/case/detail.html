@@ -53,8 +53,6 @@
 
 <div class="row">
 	<div class='col-12'>
-		
-		<!-- query case object's all visit and make a table with the data -->
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -67,6 +65,8 @@
 					<th>Date To</th>
 					<th>Detail</th>
 					<th>Category</th>
+					<th>Modify</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,12 +75,14 @@
 					<td>{{ visit.location.location }}</td>
 					<td>{{ visit.location.address }}</td>
 					<td>{{ visit.location.district }}</td>
-					<td>{{ visit.location.x_coord}}</td>
-					<td>>{{ visit.locaiton.y_coord }}</td>
+					<td>{{ visit.location.x_coord }}</td>
+					<td>{{ visit.location.y_coord }}</td>
 					<td>{{ visit.date_from }}</td>
 					<td>{{ visit.date_to }}</td>
 					<td>{{ visit.detail }}</td>
-					<td>{{ visit.location.category }}</td>
+					<td>{{ visit.category }}</td>
+					<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/modify" style=>Modify</a></td>
+					<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/delete" style=>Delete</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

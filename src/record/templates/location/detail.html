@@ -23,7 +23,6 @@
 					<th>District</th>
 					<th>X Coord</th>
 					<th>Y Coord</th>
-					<th>Category</th>
 					<th>Modify</th>
 					<th>Delete</th>
 				</tr>
@@ -35,7 +34,6 @@
 					<td>{{ object.district }}</td>
 					<td>{{ object.x_coord }}</td>
 					<td>{{ object.y_coord }}</td>
-					<td>{{ object.category }}</td>
 					<td><a class="btn btn-primary" href="{{ object.get_location_modify_url }}" style=>Modify</a></td>
 					<td><a class="btn btn-primary" href="{{ object.get_location_delete_url }}" style=>Delete</a></td>
 				</tr>

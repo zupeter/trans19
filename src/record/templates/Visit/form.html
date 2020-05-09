@@ -3,15 +3,17 @@
 {% block content %}
 <h2>Add Visit</h2>
 
-Reminder: date format is YYYY-MM-DD
+<p class="text-info">Reminder: date format is YYYY-MM-DD</p>
 <hr>
 <form method='POST' action='.'> {% csrf_token %}
 	{{ form.as_p }}
-	<button type="submit"> Add </button>
+	<button type="submit" class="btn btn-primary"> Add </button>
+	<a href="../.." class="btn btn-primary">Back</a>
 </form>
 <hr>
+<hr>
 
-
+Location not yet in database?  -->
 <a href="/location/create/" class="btn btn-primary">Add location</a>
 
 {% endblock %}

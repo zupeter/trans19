@@ -35,7 +35,7 @@ def case_record_create_view(request):
 	return render(request, template_name,context)
 
 
-def case_record_detail_view(request,pkey):
+def case_record_detail_view(request, pkey):
 	#VIEW case
 	#get 1 object -> detail view
 	#under case details, list all the visits to locaiton
@@ -45,7 +45,7 @@ def case_record_detail_view(request,pkey):
 	return render(request, template_name, context)
 
 
-def case_record_update_view(request,pkey):
+def case_record_update_view(request, pkey):
 	#MODIFY case
 
 	obj = get_object_or_404(CaseRecord, pk=pkey)
@@ -53,14 +53,14 @@ def case_record_update_view(request,pkey):
 	form = CaseForm(request.POST or None, instance=obj)
 	if form.is_valid():
 		form.save()
-		return redirect("/case/"+str(obj.case_number)+"/detail")
+		return redirect("/case/"+str(obj.case_number))
 	template_name = "case/modify/modify.html"
 	context = {'form':form}
 
 	return render(request, template_name, context)
 
 
-def case_record_delete_view(request,pkey):
+def case_record_delete_view(request, pkey):
 	obj = get_object_or_404(CaseRecord, pk=pkey)
 	template_name = "case/delete/delete.html"
 	if request.method == "POST":
@@ -70,10 +70,10 @@ def case_record_delete_view(request,pkey):
 	return render(request, template_name, context)
 
 
-def case_record_add_visit_view(request,pkey):
+def case_record_add_visit_view(request, pkey):
 	form = VisitForm(request.POST or None)
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
-	template_name = "Vist/form.html"
+	template_name = "Visit/form.html"
 	
 	if form.is_valid():
 		obj = form.save(commit=False)
@@ -83,3 +83,27 @@ def case_record_add_visit_view(request,pkey):
 	context = {"form":form}
 	template_name = "Visit/form.html"
 	return render(request, template_name,context)
+
+
+def case_record_modify_visit_view(request, pkey, vpkey):
+	obj_case = get_object_or_404(CaseRecord, pk=pkey)
+	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
+	form = VisitForm(request.POST or None, instance=obj_visit)
+	if form.is_valid():
+		form.save()
+		return redirect("../..")
+	template_name = "Visit/edit.html"
+	context = {'form':form, 'case':obj_case, 'visit':obj_visit}
+	return render(request, template_name, context)
+
+
+def case_record_delete_visit_view(request, pkey, vpkey):
+	obj_case = get_object_or_404(CaseRecord, pk=pkey)
+	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
+	if request.method == "POST":
+		obj_visit.delete()
+		return redirect("/case/"+str(pkey))
+	context = {'case':obj_case,'visit':obj_visit}
+	template_name = "Visit/delete.html"
+	return render(request, template_name, context)
+

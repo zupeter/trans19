@@ -9,7 +9,7 @@ class CaseRecord(models.Model):
 	case_number			= models.PositiveIntegerField(unique=True)
 
 	def __str__(self):
-		return f"Case {self.pk}"
+		return f"Case {self.case_number}"
 
 	def get_absolute_url(self):
 		# print(f"/case/{self.case_number}")
@@ -70,7 +70,7 @@ class LocationRecord(models.Model):
 	district		= models.CharField(max_length=20, choices=DISTRICT_CHOICES, default=CENTRALANDWESTERN)
 	x_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	y_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
-	category		= models.CharField(max_length=30)
+	
 
 
 
@@ -94,5 +94,5 @@ class VisitRecord(models.Model):
 	date_from		= models.DateField()
 	date_to			= models.DateField()
 	detail			= models.CharField(max_length=127, null=True, blank=True)
-	
+	category		= models.CharField(max_length=30)
 

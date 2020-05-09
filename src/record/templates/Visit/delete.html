@@ -3,6 +3,72 @@
 {% block content %}
 
 
+<div class='row'>
+	<div class='col-12'>
 
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Identity Document Number</th>
+					<th>Date of Birth</th>
+					<th>Date Case</th>
+					<th>Case Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{case.name}}</td>
+					<td>{{case.id_number}}</td>
+					<td>{{case.date_of_birth}}</td>
+					<td>{{case.date_of_comfirmed}}</td>
+					<td>{{case.case_number}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br>
+
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<h1>Are you sure you want to <b style="color:red">DELETE</b> the following visit?</h1>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>location</th>
+					<th>Address</th>
+					<th>District</th>
+					<th>X Coord</th>
+					<th>Y Coord</th>
+					<th>Date From</th>
+					<th>Date To</th>
+					<th>Detail</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ visit.location.location }}</td>
+					<td>{{ visit.location.address }}</td>
+					<td>{{ visit.location.district }}</td>
+					<td>{{ visit.location.x_coord }}</td>
+					<td>{{ visit.location.y_coord }}</td>
+					<td>{{ visit.date_from }}</td>
+					<td>{{ visit.date_to }}</td>
+					<td>{{ visit.detail }}</td>
+					<td>{{ visit.category }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<form method="POST">{% csrf_token %}
+			<button class="btn btn-danger">Yes, delete</button>
+		</form>
+		<br>
+		<a href="../.." class="btn btn-primary">Back</a>
+	</div>
+</div>
 
 {% endblock %}

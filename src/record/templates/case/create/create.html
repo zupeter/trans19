@@ -1,39 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<h1>Add a comfirmed case</h1>
+
+<p class="text-info">Reminder: date format is YYYY-MM-DD</p>
+
 <form method='POST' action='.'> {% csrf_token %}
-	{{ form.as_p }}
-	<p class="text-info">Date format is mm/dd/yyyy </p>
-	<button type="submit"> Confirm </button>
+	{% for field in form %}
+		<hr>
+	    <div class="fieldWrapper">
+	        {{ field.errors }}
+	        {{ field.label_tag }} {{ field }}
+	        {% if field.help_text %}
+	        <p class="help">{{ field.help_text|safe }}</p>
+	        {% endif %}
+	    </div>
+	{% endfor %}
+	<hr>
+	
+	<button type="submit" class="btn btn-primary"> Confirm </button>
 
-	<br>
-
-	<br>
 	<a class="btn btn-primary" href=".."> Back </a>
 </form>
 
-<!--	<h2> Creating new case</h2>
-		<form method='POST' action=".">{% csrf_token %}
-			<dd>Name</dd>
-				<input type="text" name = "name">
-			<dd>Identity Document Number</dd>
-				<input type="text" name = "id_number">
-			<dd>Date of Birth</dd>
-				<input type="date" name="date_of_birth">
-			<dd>Date Case</dd>
-				<input type="date" name=" date_of_comfirmed">
-			<dd>Case Number</dd>
-				<input type="text" name = "case_number">
-			<br>
-			<br>
-			<button type="submit"  > Add </button>
-			<a class="btn btn-primary" href="http://127.0.0.1:8000/"> Cancel </a>
-		</form>
--->
-
-<!--				<script>-->
-<!--					function remind(){-->
-<!--						alert("Creating successfully");-->
-<!--					}-->
-<!--				</script>-->
 {% endblock %}
