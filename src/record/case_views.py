@@ -77,7 +77,6 @@ def case_record_add_visit_view(request,pkey):
 	
 	if form.is_valid():
 		obj = form.save(commit=False)
-		print (obj.case)
 		obj.save()
 		form = VisitForm()
 

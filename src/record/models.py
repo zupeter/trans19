@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class CaseRecord(models.Model):
 	name				= models.CharField(max_length=255)
-	id_number 			= models.CharField(max_length=30,unique=True)
+	id_number 			= models.CharField(max_length=20,unique=True)
 	date_of_birth 		= models.DateField()
 	date_of_comfirmed	= models.DateField()
 	case_number			= models.PositiveIntegerField(unique=True)
