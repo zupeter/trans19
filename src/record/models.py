@@ -70,7 +70,6 @@ class LocationRecord(models.Model):
 	district		= models.CharField(max_length=20, choices=DISTRICT_CHOICES, default=CENTRALANDWESTERN)
 	x_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
 	y_coord			= models.DecimalField(max_digits=22, decimal_places=4, null=True)
-	detail			= models.CharField(max_length=127, null=True, blank=True)
 	category		= models.CharField(max_length=30)
 
 
@@ -90,8 +89,10 @@ class LocationRecord(models.Model):
 
 
 class VisitRecord(models.Model):
+	case 			= models.ForeignKey(CaseRecord, on_delete=models.CASCADE)
 	location		= models.ForeignKey(LocationRecord, on_delete=models.PROTECT)
 	date_from		= models.DateField()
 	date_to			= models.DateField()
-	case 			= models.ForeignKey(CaseRecord, on_delete=models.CASCADE)
+	detail			= models.CharField(max_length=127, null=True, blank=True)
+	
 
