@@ -20,10 +20,6 @@ class CaseRecord(models.Model):
 
 	def get_delete_url(self):
 		return f"{self.get_absolute_url()}/delete"
-	
-	def get_trace_url(self):
-		return f"{self.get_trace_url()}/trace"
-
 
 
 class LocationRecord(models.Model):
