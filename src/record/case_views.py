@@ -5,6 +5,7 @@ from django.db.models import Q
 from .models import *
 from .form import *
 
+from datetime import timedelta
 # CRUD #Create / Retrieve / Update / Delete
 
 # GET ->Retrieve / List
@@ -120,14 +121,23 @@ def case_search_connections(request, pkey, vpkey):
 		print (form.cleaned_data['window'])
 		print (obj_visit.location)
 		print (obj_visit.location.visitrecord_set.all())
+		print ("Search period:",obj_visit.date_from - timedelta(days=form.cleaned_data['window'])," to ",obj_visit.date_from + timedelta(days=form.cleaned_data['window']))
+		search_date_from = obj_visit.date_from - timedelta(days=form.cleaned_data['window'])
+		search_date_to = obj_visit.date_from + timedelta(days=form.cleaned_data['window'])
 		for visit in obj_visit.location.visitrecord_set.all():
 			if visit.case.pk is not obj_case.pk:
-				print (visit)
-				print (visit.date_from)
-				print (visit.date_to)
-				print (visit.date_to.month)
-				print (visit.date_to.day)
-				print (visit.date_to.year)
+				print ("This visit in same location but not same case\n",visit)
+				print (visit.case,"form", visit.date_from, "to" ,visit.date_to)
+				if visit.date_to < search_date_from or visit.date_from > obj_visit.date_to:
+					pass
+				elif ( (visit.date_from <= search_date_from and visit.date_to >= search_date_from) or 
+					(visit.date_from <= search_date_to and visit.date_to >= search_date_to) or 
+					(visit.date_from >= search_date_from and visit.date_to <= search_date_to)):
+					connections.append(visit)
+		print(connections)
+
+
+
 	context = {'selected_case':obj_case,'selected_visit':obj_visit, 'form':form, 'conn':connections}
 	template_name = "case/connections.html"
 	return render(request, template_name, context)
