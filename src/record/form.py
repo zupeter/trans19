@@ -21,4 +21,4 @@ class VisitForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-	window = forms.IntegerField(label='Search Window of time')
+	window = forms.IntegerField(label='Search Window of time (in days)')
