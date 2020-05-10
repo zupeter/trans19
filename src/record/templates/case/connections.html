@@ -66,10 +66,10 @@
 </div>
 <hr>
 <hr>
+{% if conn %}
 <div class="row">
 	<div class='col-6'>
-		<h4 style="display:inline">Connected Cases</h4>
-		</br>
+		<h4>Possible Cases Connection</h4>
 		<h4 style="display:inline">Location: (Location Name)</h4>
 	</div>
 </div>
@@ -78,29 +78,47 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th>Name</th>
-					<th>Date Case</th>
 					<th>Case Number</th>
-					<th>Date Visited</th>
+					<th>Name</th>
+					<th>Date Case Comfirmed</th>
+					<th>Common Location visited</th>
+					<th colspan="2">Date Visited by this Patient</th>
 					<th>Detail</th>
-					<th>Date Visited by Selected Patient</th>
+					<th colspan="2">Date Visited by Selected Patient</th>
 					<th>Detail</th>
-					
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>Date from</th>
+					<th>Date to</th>
+					<th></th>
+					<th>Date from</th>
+					<th>Date to</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
+				{% for item in conn %}
 				<tr>
-					<td>{{object_case.name}}</td>
-					<td>{{object_case.date_of_comfirmed}}</td>
-					<td>{{object_case.case_number}}</td>
-					<td>{{object_case.date_from}} - {{object_case.date_to}}</td>
-					<td>{{object_case.detail}}</td>
-					<td>{{object_case.date_from}} - {{object_case.date_to}} of target</td>
-					<td>{{object_case.detail}} of target</td>
+					<td>{{ item.case.case_number }}</td>
+					<td>{{ item.case.name }}</td>
+					<td>{{ item.case.date_of_comfirmed }}</td>
+					<td>{{ item.location }}</td>
+					<td>{{ item.date_from }}</td>
+					<td>{{ item.date_to }}</td>
+					<td>{{ item.detail }}</td>
+					<td>{{ selected_visit.date_from }}</td>
+					<td>{{ selected_visit.date_to }}</td>
+					<td>{{ selected_visit.detail }}</td>
 				</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</div>
 </div>
+{% endif %}
 
 {% endblock %}
