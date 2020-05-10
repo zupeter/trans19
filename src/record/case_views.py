@@ -27,13 +27,14 @@ def case_record_create_view(request):
 	#ADD case(s)
 	#with a form
 	form = CaseForm(request.POST or None)
+	context = {"form":form}
+	template_name = "case/create.html"
 	if form.is_valid():
 		obj = form.save(commit=False)
 		# obj.case_num
 		obj.save()
 		form = CaseForm()
-	context = {"form":form}
-	template_name = "case/create.html"
+		context = {"form":form, 'saved':True}
 	return render(request, template_name,context)
 
 
