@@ -121,7 +121,13 @@ def case_search_connections(request, pkey, vpkey):
 		print (obj_visit.location)
 		print (obj_visit.location.visitrecord_set.all())
 		for visit in obj_visit.location.visitrecord_set.all():
-			print (visit)
+			if visit.case.pk is not obj_case.pk:
+				print (visit)
+				print (visit.date_from)
+				print (visit.date_to)
+				print (visit.date_to.month)
+				print (visit.date_to.day)
+				print (visit.date_to.year)
 	context = {'selected_case':obj_case,'selected_visit':obj_visit, 'form':form, 'conn':connections}
 	template_name = "case/connections.html"
 	return render(request, template_name, context)
