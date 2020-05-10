@@ -29,9 +29,13 @@
 				</tr>
 			</tbody>
 		</table>
+		
 
 		<br>
 		{% if object.visitrecord_set.all %}
+			<div class="text-right">
+				<a class="btn btn-primary" href="../.."> Back </a>
+			</div>
 			<div class="alert alert-primary" role="alert">
 				You need to delete all visit records before deleting the location.
 			</div>
@@ -67,6 +71,9 @@
 		<form method="POST">{% csrf_token %}
 			<button class="btn btn-danger">Yes, delete</button>
 		</form>
+		<div class="text-right">
+			<a class="btn btn-primary" href="../.."> Back </a>
+		</div>
 		{% endif %}
 	</div>
 </div>

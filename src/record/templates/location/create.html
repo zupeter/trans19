@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Add New Location</h2>
 
+<div class="row">
+	<div class="col-6">
+		<h2>Add New Location</h2>
+	</div>
+	<div class="col-6">
+		<div class="text-right">
+			<a class="btn btn-primary" href=".."> Back </a>
+		</div>
+	</div>
+</div>
 <p class="text-info">Reminder: date format is YYYY-MM-DD</p>
-
+{% if saved %}
+	<div class="row">
+		<div class="col-auto">
+			<div class="alert alert-info" role="alert">
+				Saved
+			</div>
+		</div>
+	</div>
+{% endif %}
 <form method='POST' action='.'> {% csrf_token %}
 	{% for field in form %}
 		<hr>
@@ -19,5 +36,7 @@
 	<hr>
 	<button type="submit" class="btn btn-primary"> Save </button>
 </form>
+
+
 
 {% endblock %}

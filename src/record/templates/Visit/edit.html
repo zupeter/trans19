@@ -3,6 +3,17 @@
 {% block content %}
 <h1>Modify the following Visit</h1>
 
+{% if saved %}
+	<div class="row">
+		<div class="col-auto">
+			<div class="alert alert-info" role="alert">
+				Saved
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+
 <p class="text-info">Reminder: date format is YYYY-MM-DD</p>
 <hr>
 <form method='POST' action="modify"> {% csrf_token %}

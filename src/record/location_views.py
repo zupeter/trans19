@@ -20,12 +20,14 @@ def location_record_create_view(request):
 	#ADD location(s)
 	#with a form
 	form = LocationForm(request.POST or None)
+	context = {'form':form}
+	template_name = "location/create.html"
+
 	if form.is_valid():
 		obj = form.save(commit=False)
 		obj.save()
 		form = LocationForm()
-	context = {'form':form}
-	template_name = "location/create.html"
+		context = {'form':form, 'saved':True}
 	return render(request, template_name, context)
 
 
@@ -42,11 +44,11 @@ def location_record_update_view(request,pkey):
 	#MODIFY location
 	obj_location = get_object_or_404(LocationRecord, pk=pkey)
 	form = LocationForm(request.POST or None, instance=obj_location)
-	if form.is_valid():
-		form.save()
-		return redirect("/location/"+str(obj_location.pk)+"/detail")
 	template_name = "location/form.html"
 	context = {'form':form}
+	if form.is_valid():
+		form.save()
+		context = {'form':form, 'saved':True}
 	return render(request, template_name, context)
 
 

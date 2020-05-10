@@ -53,12 +53,11 @@ def case_record_update_view(request, pkey):
 	obj = get_object_or_404(CaseRecord, pk=pkey)
 	objlink = obj.case_number
 	form = CaseForm(request.POST or None, instance=obj)
-	if form.is_valid():
-		form.save()
-		return redirect("/case/"+str(obj.case_number))
 	template_name = "case/modify.html"
 	context = {'form':form}
-
+	if form.is_valid():
+		form.save()
+		context = {'form':form,'saved':True}
 	return render(request, template_name, context)
 
 
@@ -91,11 +90,11 @@ def case_record_modify_visit_view(request, pkey, vpkey):
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
 	form = VisitForm(request.POST or None, instance=obj_visit)
-	if form.is_valid():
-		form.save()
-		return redirect("../..")
 	template_name = "Visit/edit.html"
 	context = {'form':form, 'case':obj_case, 'visit':obj_visit}
+	if form.is_valid():
+		form.save()
+		context = {'form':form, 'case':obj_case, 'visit':obj_visit, 'saved':True}
 	return render(request, template_name, context)
 
 

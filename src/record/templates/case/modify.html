@@ -3,8 +3,18 @@
 {% block content %}
 <h1>Modify the following Case</h1>
 <hr>
+{% if saved %}
+	<div class="row">
+		<div class="col-auto">
+			<div class="alert alert-info" role="alert">
+				Saved
+			</div>
+		</div>
+	</div>
+{% endif %}
 <form method='POST' action='.'> {% csrf_token %}
 	{{ form.as_p }}
-	<button type="submit"> Save </button>
+	<button class="btn btn-primary" type="submit"> Save </button>
+	<a href='..' class="btn btn-primary">Back</a>
 </form>
 {% endblock %}
