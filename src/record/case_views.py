@@ -33,7 +33,7 @@ def case_record_create_view(request):
 		obj.save()
 		form = CaseForm()
 	context = {"form":form}
-	template_name = "case/create/create.html"
+	template_name = "case/create.html"
 	return render(request, template_name,context)
 
 
@@ -56,7 +56,7 @@ def case_record_update_view(request, pkey):
 	if form.is_valid():
 		form.save()
 		return redirect("/case/"+str(obj.case_number))
-	template_name = "case/modify/modify.html"
+	template_name = "case/modify.html"
 	context = {'form':form}
 
 	return render(request, template_name, context)
@@ -64,7 +64,7 @@ def case_record_update_view(request, pkey):
 
 def case_record_delete_view(request, pkey):
 	obj = get_object_or_404(CaseRecord, pk=pkey)
-	template_name = "case/delete/delete.html"
+	template_name = "case/delete.html"
 	if request.method == "POST":
 		obj.delete()
 		return redirect("/case")
