@@ -5,7 +5,7 @@ class CaseRecord(models.Model):
 	name				= models.CharField(max_length=255)
 	id_number 			= models.CharField(max_length=20,unique=True)
 	date_of_birth 		= models.DateField()
-	date_of_comfirmed	= models.DateField()
+	date_of_confirmed	= models.DateField()
 	case_number			= models.PositiveIntegerField(unique=True)
 
 	def __str__(self):
