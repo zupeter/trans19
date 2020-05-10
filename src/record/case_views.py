@@ -100,12 +100,11 @@ def case_record_modify_visit_view(request, pkey, vpkey):
 
 
 def case_record_delete_visit_view(request, pkey, vpkey):
-	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
 	if request.method == "POST":
 		obj_visit.delete()
-		return redirect("/case/"+str(pkey))
-	context = {'case':obj_case,'visit':obj_visit}
+		return redirect("../..")
+	context = {'visit':obj_visit}
 	template_name = "Visit/delete.html"
 	return render(request, template_name, context)
 

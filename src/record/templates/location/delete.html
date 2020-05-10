@@ -31,9 +31,43 @@
 		</table>
 
 		<br>
+		{% if object.visitrecord_set.all %}
+			<div class="alert alert-primary" role="alert">
+				You need to delete all visit records before deleting the location.
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<h4>Visits under this location</h4>
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Case Number</th>
+								<th>Patient Name</th>
+								<th>Date from</th>
+								<th>Date to</th>
+								<th>Detail</th>
+								<th>Delete Visit</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for visit in object.visitrecord_set.all %}
+							<tr>
+								<td>{{ visit.case.case_number }}</td>
+								<td>{{ visit.case.name }}</td>
+								<td>{{ visit.date_from }}</td>
+								<td>{{ visit.date_to }}</td>
+								<td>{{ visit.detail }}</td>
+								<td><a class="btn btn-primary" href="visit/{{ visit.pk }}/delete" style=>Delete</a></td>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% else %}
 		<form method="POST">{% csrf_token %}
 			<button class="btn btn-danger">Yes, delete</button>
 		</form>
+		{% endif %}
 	</div>
 </div>
 
