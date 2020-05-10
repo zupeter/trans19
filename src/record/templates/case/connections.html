@@ -1,10 +1,10 @@
-{% extends "base.html %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <div class="row">
-	<div class="col-6>
-		<h4 style="display:inline">Target Case</h4>
+	<div class="col-6">
+		<h4>Selected Case</h4>
 	</div>
 </div>
 <div class='row'>
@@ -12,21 +12,56 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
+					<th>Case Name</th>
 					<th>Name</th>
-					<th>Date Case</th>
-					<th>Case Number</th>
+					<th>Date Case Confirmed</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{object_case.name}}</td>
-					<td>{{object_case.id_number}}</td>
-					<td>{{object_case.date_of_birth}}</td>
-					<td>{{object_case.date_of_comfirmed}}</td>
-					<td>{{object_case.case_number}}</td>
+					<td>{{ selected_case.case_number }}</td>
+					<td>{{ selected_case.name }}</td>
+					<td>{{ selected_case.date_of_comfirmed }}</td>
 				</tr>
 			</tbody>
 		</table>
+		<h4>Selected Visit</h2>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>location</th>
+					<th>Address</th>
+					<th>District</th>
+					<th>X Coord</th>
+					<th>Y Coord</th>
+					<th>Date From</th>
+					<th>Date To</th>
+					<th>Detail</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ selected_visit.location.location }}</td>
+					<td>{{ selected_visit.location.address }}</td>
+					<td>{{ selected_visit.location.district }}</td>
+					<td>{{ selected_visit.location.x_coord }}</td>
+					<td>{{ selected_visit.location.y_coord }}</td>
+					<td>{{ selected_visit.date_from }}</td>
+					<td>{{ selected_visit.date_to }}</td>
+					<td>{{ selected_visit.detail }}</td>
+					<td>{{ selected_visit.category }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-auto">
+		<form method='POST' action='trace'> {% csrf_token %}
+			{{ form }}
+			<button type="submit" class="btn btn-primary"> Search </button>
+		</form>
 	</div>
 </div>
 <hr>
@@ -68,4 +103,4 @@
 	</div>
 </div>
 
-<% endblock %>
+{% endblock %}
