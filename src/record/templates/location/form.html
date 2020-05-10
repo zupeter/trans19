@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Modify the following Location</h1>
+<hr>
 <form method='POST' action='.'> {% csrf_token %}
 	{{ form.as_p }}
 	<button type="submit"> Save </button>
