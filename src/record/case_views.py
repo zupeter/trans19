@@ -128,13 +128,14 @@ def case_search_connections(request, pkey, vpkey):
 			if visit.case.pk is not obj_case.pk:
 				print ("This visit in same location but not same case\n",visit)
 				print (visit.case,"form", visit.date_from, "to" ,visit.date_to)
-				if visit.date_to < search_date_from or visit.date_from > obj_visit.date_to:
-					pass
-				elif ( (visit.date_from <= search_date_from and visit.date_to >= search_date_from) or 
-					(visit.date_from <= search_date_to and visit.date_to >= search_date_to) or 
+				# if visit.date_to < search_date_from or visit.date_from > obj_visit.date_to:
+				# 	pass
+				if ( (visit.date_from <= search_date_from and visit.date_to >= search_date_from) or
+					(visit.date_from <= search_date_to and visit.date_to >= search_date_to) or
 					(visit.date_from >= search_date_from and visit.date_to <= search_date_to)):
 					connections.append(visit)
 		print(connections)
+		# print(visit.date_from.year)
 
 
 
