@@ -109,32 +109,29 @@ def case_record_delete_visit_view(request, pkey, vpkey):
 	template_name = "Visit/delete.html"
 	return render(request, template_name, context)
 
-def case_search_connections(request, pkey, vpkey):
+def case_search_connections(request, pkey):
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
-	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
 	# connection_visit = VisitRecord.objects.filter(~Q(date_from > obj_visit.date_to +2), ~Q(date_from < obj_visit.date_from -2),Q(location = obj_visit.location))
 	# connection_case = get_object_or_404(CaseRecord, case_number = connection_visit.case) #someone help me link them together
 	# context = {'og_case':obj_case,'og_visit':obj_visit, 'connection_case':connection_case, 'connection_visit':connection_visit}
 	form = SearchForm(request.POST or None)
 	connections = []
 	template_name = "case/connections.html"
-	context = {'selected_case':obj_case,'selected_visit':obj_visit, 'form':form}
+	context = {'selected_case':obj_case,'form':form}
 	if form.is_valid():
-		print (form.cleaned_data['window'])
-		print (obj_visit.location)
-		print (obj_visit.location.visitrecord_set.all())
-		print ("Search period:",obj_visit.date_from - timedelta(days=form.cleaned_data['window'])," to ",obj_visit.date_from + timedelta(days=form.cleaned_data['window']))
-		search_date_from = obj_visit.date_from - timedelta(days=form.cleaned_data['window'])
-		search_date_to = obj_visit.date_from + timedelta(days=form.cleaned_data['window'])
-		for visit in obj_visit.location.visitrecord_set.all():
-			if visit.case.pk is not obj_case.pk:
-				print ("This visit in same location but not same case\n",visit)
-				print (visit.case,"form", visit.date_from, "to" ,visit.date_to)
-				if ( (visit.date_from <= search_date_from and visit.date_to >= search_date_from) or 
-					(visit.date_from <= search_date_to and visit.date_to >= search_date_to) or 
-					(visit.date_from >= search_date_from and visit.date_to <= search_date_to)):
-					connections.append(visit)
+		for obj_visit in obj_case.visitrecord_set.all():
+			print (obj_visit.location)
+			print (obj_visit.location.visitrecord_set.all())
+			print ("Search period:",obj_visit.date_from - timedelta(days=form.cleaned_data['window'])," to ",obj_visit.date_from + timedelta(days=form.cleaned_data['window']))
+			search_date_from = obj_visit.date_from - timedelta(days=form.cleaned_data['window'])
+			search_date_to = obj_visit.date_from + timedelta(days=form.cleaned_data['window'])
+			for visit in obj_visit.location.visitrecord_set.all():
+				if visit.case.pk is not obj_case.pk:
+					if ( (visit.date_from <= search_date_from and visit.date_to >= search_date_from) or 
+						(visit.date_from <= search_date_to and visit.date_to >= search_date_to) or 
+						(visit.date_from >= search_date_from and visit.date_to <= search_date_to)):
+						connections.append([visit,obj_visit])
 		print(connections)
-		context = {'selected_case':obj_case,'selected_visit':obj_visit, 'form':form, 'conn':connections}
+		context = {'selected_case':obj_case,'form':form, 'conn':connections}
 
 	return render(request, template_name, context)

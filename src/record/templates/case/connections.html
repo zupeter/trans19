@@ -25,35 +25,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<h4>Selected Visit</h2>
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th>location</th>
-					<th>Address</th>
-					<th>District</th>
-					<th>X Coord</th>
-					<th>Y Coord</th>
-					<th>Date From</th>
-					<th>Date To</th>
-					<th>Detail</th>
-					<th>Category</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>{{ selected_visit.location.location }}</td>
-					<td>{{ selected_visit.location.address }}</td>
-					<td>{{ selected_visit.location.district }}</td>
-					<td>{{ selected_visit.location.x_coord }}</td>
-					<td>{{ selected_visit.location.y_coord }}</td>
-					<td>{{ selected_visit.date_from }}</td>
-					<td>{{ selected_visit.date_to }}</td>
-					<td>{{ selected_visit.detail }}</td>
-					<td>{{ selected_visit.category }}</td>
-				</tr>
-			</tbody>
-		</table>
 	</div>
 </div>
 <div class='row'>
@@ -101,18 +72,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for item in conn %}
+				{% for searched, selected in conn %}
 				<tr>
-					<td>{{ item.case.case_number }}</td>
-					<td>{{ item.case.name }}</td>
-					<td>{{ item.case.date_of_comfirmed }}</td>
-					<td>{{ item.location }}</td>
-					<td>{{ item.date_from }}</td>
-					<td>{{ item.date_to }}</td>
-					<td>{{ item.detail }}</td>
-					<td>{{ selected_visit.date_from }}</td>
-					<td>{{ selected_visit.date_to }}</td>
-					<td>{{ selected_visit.detail }}</td>
+					<td>{{ searched.case.case_number }}</td>
+					<td>{{ searched.case.name }}</td>
+					<td>{{ searched.case.date_of_comfirmed }}</td>
+					<td>{{ searched.location }}</td>
+					<td>{{ searched.date_from }}</td>
+					<td>{{ searched.date_to }}</td>
+					<td>{{ searched.detail }}</td>
+					<td>{{ selected.date_from }}</td>
+					<td>{{ selected.date_to }}</td>
+					<td>{{ selected.detail }}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
