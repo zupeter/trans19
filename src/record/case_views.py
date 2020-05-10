@@ -136,4 +136,5 @@ def case_search_connections(request, pkey, vpkey):
 					connections.append(visit)
 		print(connections)
 		context = {'selected_case':obj_case,'selected_visit':obj_visit, 'form':form, 'conn':connections}
+
 	return render(request, template_name, context)
