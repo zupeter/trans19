@@ -4,7 +4,7 @@ from .models import *
 class CaseForm(forms.ModelForm):
 	class Meta:
 		model = CaseRecord
-		fields = ['name','id_number','date_of_birth','date_of_comfirmed','case_number']
+		fields = ['name','id_number','date_of_birth','date_of_confirmed','case_number']
 
 
 class LocationForm(forms.ModelForm):
