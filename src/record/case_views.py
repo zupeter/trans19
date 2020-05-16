@@ -48,6 +48,8 @@ def case_record_detail_view(request, pkey):
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	template_name = "case/detail.html"
 	context = {'object_case': obj_case}
+	if request.user.groups.filter(name='Epidemiologist').exists():
+		context = {'object_case': obj_case, 'epi':True}
 	return render(request, template_name, context)
 
 
@@ -119,6 +121,9 @@ def case_record_delete_visit_view(request, pkey, vpkey):
 
 @login_required
 def case_search_connections(request, pkey):
+	# print(request.user)
+	if not(request.user.groups.filter(name='Epidemiologist').exists()):
+		return redirect("/")
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	# connection_visit = VisitRecord.objects.filter(~Q(date_from > obj_visit.date_to +2), ~Q(date_from < obj_visit.date_from -2),Q(location = obj_visit.location))
 	# connection_case = get_object_or_404(CaseRecord, case_number = connection_visit.case) #someone help me link them together
