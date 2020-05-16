@@ -22,3 +22,10 @@ class VisitForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
 	window = forms.IntegerField(label='Search Window of time (in days)')
+
+
+
+class LoginForm(forms.ModelForm):
+	class Meta:
+		model = UserRecord
+		fields = ['username', 'password']
