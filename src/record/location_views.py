@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .models import *
 from .form import *
 
-
+@login_required
 def location_record_list_view(request):
 	#list out locations
 	#could be search
@@ -15,7 +16,7 @@ def location_record_list_view(request):
 	return render(request, template_name, context)
 	return HttpResponse("<h1>List of locations</h1>")
 
-
+@login_required
 def location_record_create_view(request):
 	#ADD location(s)
 	#with a form
@@ -30,7 +31,7 @@ def location_record_create_view(request):
 		context = {'form':form, 'saved':True}
 	return render(request, template_name, context)
 
-
+@login_required
 def location_record_detail_view(request,pkey):
 	#VIEW one location in detail
 	obj_location = get_object_or_404(LocationRecord, pk=pkey)
@@ -39,7 +40,7 @@ def location_record_detail_view(request,pkey):
 	return render(request, template_name, context)
 	# return HttpResponse("<h1>view one location in detail</h1>")
 
-
+@login_required
 def location_record_update_view(request,pkey):
 	#MODIFY location
 	obj_location = get_object_or_404(LocationRecord, pk=pkey)
@@ -51,7 +52,7 @@ def location_record_update_view(request,pkey):
 		context = {'form':form, 'saved':True}
 	return render(request, template_name, context)
 
-
+@login_required
 def location_record_delete_view(request,pkey):
 	obj = get_object_or_404(LocationRecord, pk=pkey)
 	template_name = "location/delete.html"

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 from .models import *
 from .form import *
@@ -12,7 +13,7 @@ from datetime import timedelta
 
 # POST -> Create / Update / Delete
 
-
+@login_required
 def case_record_list_view(request):
 	#list out cases
 	#could be search
@@ -22,6 +23,7 @@ def case_record_list_view(request):
 	return render(request, template_name, context)
 
 
+@login_required
 def case_record_create_view(request):
 	# MANSOOOOOOOOOOOOOOOON HI
 	#ADD case(s)
@@ -38,6 +40,7 @@ def case_record_create_view(request):
 	return render(request, template_name,context)
 
 
+@login_required
 def case_record_detail_view(request, pkey):
 	#VIEW case
 	#get 1 object -> detail view
@@ -48,6 +51,7 @@ def case_record_detail_view(request, pkey):
 	return render(request, template_name, context)
 
 
+@login_required
 def case_record_update_view(request, pkey):
 	#MODIFY case
 
@@ -62,6 +66,7 @@ def case_record_update_view(request, pkey):
 	return render(request, template_name, context)
 
 
+@login_required
 def case_record_delete_view(request, pkey):
 	obj = get_object_or_404(CaseRecord, pk=pkey)
 	template_name = "case/delete.html"
@@ -72,6 +77,7 @@ def case_record_delete_view(request, pkey):
 	return render(request, template_name, context)
 
 
+@login_required
 def case_record_add_visit_view(request, pkey):
 	form = VisitForm(request.POST or None)
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
@@ -87,6 +93,7 @@ def case_record_add_visit_view(request, pkey):
 	return render(request, template_name,context)
 
 
+@login_required
 def case_record_modify_visit_view(request, pkey, vpkey):
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
@@ -99,6 +106,7 @@ def case_record_modify_visit_view(request, pkey, vpkey):
 	return render(request, template_name, context)
 
 
+@login_required
 def case_record_delete_visit_view(request, pkey, vpkey):
 	obj_visit = get_object_or_404(VisitRecord, pk=vpkey)
 	if request.method == "POST":
@@ -108,6 +116,8 @@ def case_record_delete_visit_view(request, pkey, vpkey):
 	template_name = "Visit/delete.html"
 	return render(request, template_name, context)
 
+
+@login_required
 def case_search_connections(request, pkey):
 	obj_case = get_object_or_404(CaseRecord, pk=pkey)
 	# connection_visit = VisitRecord.objects.filter(~Q(date_from > obj_visit.date_to +2), ~Q(date_from < obj_visit.date_from -2),Q(location = obj_visit.location))
