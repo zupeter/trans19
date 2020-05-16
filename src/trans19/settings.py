@@ -77,7 +77,11 @@ WSGI_APPLICATION = 'trans19.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'deploydemo',
+        'USER': 'groupl',
+        'PASSWORD': 'groupltrans19',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
