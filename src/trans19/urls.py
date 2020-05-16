@@ -23,6 +23,8 @@ urlpatterns = [
     
     path('',home_page),
 
+    path('',include("django.contrib.auth.urls")),
+
     path('case/',include('record.case_urls')),
 
     path('location/',include('record.location_urls')),
