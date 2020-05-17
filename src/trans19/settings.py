@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,15 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tzoz4o$lmb48(f35r2qopniro#f8go3!1^1f&h7fsvu6@logal'
+# SECRET_KEY = 'tzoz4o$lmb48(f35r2qopniro#f8go3!1^1f&h7fsvu6@logal'
+SECRET_KEY = os.environ.get('TRANS19_SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fierce-springs-79279.herokuapp.com']
 
 # Application definition
+# git remote add heroku https://git.heroku.com/fierce-springs-79279.git
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'trans19.urls'
@@ -75,14 +81,14 @@ WSGI_APPLICATION = 'trans19.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'deploydemo',
-        'USER': 'groupl',
-        'PASSWORD': 'groupltrans19',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+ 'default': {
+ 'ENGINE': 'django.db.backends.postgresql',
+ 'NAME': 'deploytest1',
+ 'USER': 'groupl_1',
+ 'PASSWORD': 'comp3297',
+ 'HOST': 'localhost',
+ 'PORT': '',
+ }
 }
 
 
@@ -122,6 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
@@ -129,3 +137,10 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_URL = '/login'
+
+
+# Heroku
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
